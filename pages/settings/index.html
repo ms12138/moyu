@@ -211,10 +211,28 @@
         />
       </div>
 
-		<div class="setting-section">
+	<div class="setting-section">
 			<input type="checkbox" id="checkbox-enable-autoplay">
 			<label for="checkbox-enable-autoplay" data-string="settingsAutoplayToggle"></label>
 		</div>
+<div class="setting-section" id="section-adjust-window-opacity">
+    <input type="checkbox" id="checkbox-adjust-window-opacity" />
+    <label
+        for="checkbox-adjust-window-opacity"
+        data-string="settingsAdjustWindowOpacityToggle"
+    ></label>
+    <input
+        type="text"
+        id="input-adjust-window-opacity"
+        style="
+            vertical-align: middle;
+            margin-left: 1em;
+            width: 375px;
+            max-width: 80vw;
+        "
+        placeholder="输入快捷键"
+    />
+</div>
 
       <div class="setting-section">
         <input type="checkbox" id="checkbox-update-notifications" />
