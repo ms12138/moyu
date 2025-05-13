@@ -34,6 +34,7 @@ var defaultKeyMap = {
   fillPassword: 'mod+\\',
   toggleTabAudio: 'shift+mod+m',
   showHistory: 'shift+mod+h'
+  adjustWindowOpacity: 'mod+o' // 新增窗口透明度调节快捷键
 }
 /* Utility function to override default mapping with user settings */
 function userKeyMap (settings) {
