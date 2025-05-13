@@ -379,7 +379,27 @@ app.on('ready', function () {
       global.URLToOpen = null
     }
   })
+  
+// moyu/main/main.js
+const { defaultKeyMap, userKeyMap } = require('../js/util/keyMap');
+const { adjustWindowOpacity } = require('../js/windowOpacity');
+const { globalShortcut } = require('electron');
 
+function registerShortcuts() {
+    const settings = {}; // 这里可以从设置中获取用户自定义的快捷键
+    const keyMap = userKeyMap(settings);
+
+    globalShortcut.register(keyMap.adjustWindowOpacity, () => {
+        adjustWindowOpacity();
+    });
+}
+
+// 在主程序启动时调用注册函数
+app.whenReady().then(() => {
+    registerShortcuts();
+    // 其他启动逻辑
+});
+  
   mainMenu = buildAppMenu()
   Menu.setApplicationMenu(mainMenu)
   createDockMenu()
