@@ -350,8 +350,32 @@ function createWindowWithBounds (bounds, customArgs) {
   return newWin
 }
 
+// moyu/main/main.js
+const { defaultKeyMap, userKeyMap } = require('../js/util/keyMap');
+const { adjustWindowOpacity } = require('../js/windowOpacity');
+const { globalShortcut } = require('electron');
+const { saveSettings, loadSettings } = require('../js/settings');
+
+function registerShortcuts() {
+    const settings = loadSettings();
+    const keyMap = userKeyMap(settings);
+
+    globalShortcut.register(keyMap.adjustWindowOpacity, () => {
+        adjustWindowOpacity();
+    });
+}
+
+// 在主程序启动时调用注册函数
+app.whenReady().then(() => {
+    registerShortcuts();
+    // 其他启动逻辑
+});
+
+// 监听设置页面的输入事件，保存用户自定义的快捷键
+// 这里需要在设置页面添加相应的事件监听器，当用户输入快捷键后调用 saveSettings 函数保存设置
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
+
 app.on('ready', function () {
   settings.set('restartNow', false)
   appIsReady = true
